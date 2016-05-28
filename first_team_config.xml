@@ -1,0 +1,9 @@
+<config>
+    <file_name>Metida</file_name>
+    <players>
+        <player x="400" y="300" r="20" name="Messy" logic="P1"/>
+        <player x="275" y="250" r="20" name="Ronaldo" logic="P2"/>
+        <player x="475" y="450" r="20" name="Mahmud" logic="P3"/>
+        <player x="150" y="300" r="20" name="Van Der Sar" logic="P4"/>
+    </players>
+</config>
