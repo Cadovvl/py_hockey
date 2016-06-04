@@ -1,8 +1,7 @@
 <config>
-    <board left="110" right="1072" top="45" bottom="680"/>
-    <gate top="283" bottom="415"/>
+    <board left="60" right="950" top="50" bottom="580"/>
+    <gate top="275" bottom="365"/>
     <player_deviation>30</player_deviation>
-    <max_score left="3" right="3"/>
     <balls>
         <ball x="(self._board.left + self._board.right) / 2"
                 y="(self._board.top + self._board.bottom) / 2"

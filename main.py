@@ -5,10 +5,15 @@ from config import *
 import sys
 from game import *
 import time
+import test_sets
+from optparse import OptionParser
+from config import *
 
+parser = OptionParser()
+parser.add_option("-t", "--from-tests", dest="test_name",
+                  help="development or testing", metavar="{testing, dev}")
 
-#score_string = score_pattern.format(score[0], score[1])
-#score_label = font_score.render(score_string, 1, color_score)
+(options, args) = parser.parse_args()
 
 
 """
@@ -43,7 +48,12 @@ def print_score(score_string):
     screen.blit(score_label, final_score_pos)
     pygame.display.flip()
 
-game = Game.from_files()
+if options.test_name:
+    ts = test_sets.GLOBAL_TEST_SET[options.test_name]
+    cfg = ts.to_strings()
+    game = Game(cfg[0], cfg[1], cfg[2])
+else:
+    game = Game.from_files()
 
 while True:
     while not game.is_paused():

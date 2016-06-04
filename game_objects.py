@@ -57,20 +57,6 @@ class Ball(Obj):
         self.vx = self.vx * 0.95
         self.vy = self.vy * 0.95
 
-
-class Logic:
-    a = (0, 0)
-
-    def move(self, board, gate, index, side, balls, your_team, enemy_team):
-        b = random.randint(1, 1000)
-        if b < 150:
-            x = random.randint(-10, 10)
-            y = random.randint(-10, 10)
-            self.a = (x, y)
-            return self.a
-        else:
-            return self.a
-
 class Player(Obj):
     vx = 0.0
     vy = 0.0
@@ -108,7 +94,7 @@ class Player(Obj):
 
     def display(self, screen):
         label = font_name.render(self.name, 1, color_name)
-        screen.blit(label, (self.centerx - self.R, self.centery - self.R - 10))
+        screen.blit(label, (self.centerx - self.R, self.centery - self.R - vertical_shift))
         Obj.display(self, screen)
 
     

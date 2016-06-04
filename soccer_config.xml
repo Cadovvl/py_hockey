@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+    <size w="1000" h="640"/>
+    <background>img/back.jpg</background>
+    <fonts>
+        <font name="font_tech" index="4" size="37" bold="True"/>
+        <font name="font_score" index="4" size="25" bold="False"/>
+        <font name="font_name" index="10" size="12" bold="True"/>
+    </fonts>
+    <colors>
+        <color name="black" r="0" g="0" b="0"/>
+        <color name="white" r="255" g="255" b="255"/>
+        <color name="blue" r="0" g="0" b="255"/>
+        <color name="green" r="0" g="255" b="0"/>
+        <color name="red" r="255" g="0" b="0"/>
+        <color name="color_name" r="255" g="255" b="255"/>
+        <color name="color_score" r="255" g="255" b="255"/>
+        <color name="color_tech" r="255" g="0" b="0"/>
+    </colors>
+
+    <images>
+        <image name="ball_skin" w="20" h="20">img/ball.png</image>
+        <image name="first_team_skin" w="40" h="40">img/team1.png</image>
+        <image name="second_team_skin" w="40" h="40">img/team2.png</image>
+        <image name="tech_error_logo" w="300" h="300">img/tech.jpg</image>
+        <image name="final_logo" w="300" h="300">img/final.png</image>
+    </images>
+
+    <score_label x="260" y="10"/>
+    <time_label x="850" y="10"/>
+    <final_logo x="350" y="150"/>
+    <final_score x="150" y="500"/>
+
+    <score_pattern>Score: -===: {0} :: {1} :===- </score_pattern>
+
+    <time_tick>20</time_tick>
+    <score_print_delay>2</score_print_delay>
+
+</config>

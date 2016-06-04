@@ -1,9 +1,15 @@
 <config>
     <file_name>Metida</file_name>
     <players>
-        <player x="400" y="300" r="20" name="Messy" logic="P1"/>
-        <player x="275" y="250" r="20" name="Ronaldo" logic="P2"/>
-        <player x="475" y="450" r="20" name="Mahmud" logic="P3"/>
-        <player x="150" y="300" r="20" name="Van Der Sar" logic="P4"/>
+        <player x="400" y="300" r="30" name="Oveckin" logic="P1"/>
+        <player x="275" y="250" r="30" name="Datsuk" logic="P2"/>
+        <player x="150" y="300" r="30" name="Bobrovsky" logic="P4"/>
     </players>
+    <reserve>
+        <player x="475" y="450" r="30" name="Kulikov" logic="P3"/>
+        <player x="self._board.left" y="self._board.top" r="30" name="LU" logic="SampleStayLogic"/>
+        <player x="self._board.right" y="self._board.bottom" r="30" name="RB" logic="SampleStayLogic"/>
+        <player x="self._board.left" y="self._gate.top" r="30" name="UG" logic="SampleStayLogic"/>
+        <player x="self._board.left" y="self._gate.bottom" r="30" name="BG" logic="SampleStayLogic"/>
+    </reserve>
 </config>

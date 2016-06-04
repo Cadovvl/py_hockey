@@ -1,9 +1,11 @@
 <config>
-    <file_name>WildHamsters</file_name>
+    <file_name>Metida</file_name>
     <players>
-        <player x="600" y="330" r="20" name="Hamster_1" logic="P1"/>
-        <player x="725" y="250" r="20" name="Hamster_1" logic="P2"/>
-        <player x="725" y="450" r="20" name="Hamster_1" logic="P3"/>
-        <player x="850" y="300" r="20" name="Hamster_1" logic="P4"/>
+        <player x="600" y="330" r="30" name="Hamster_1" logic="P1"/>
+        <player x="725" y="450" r="30" name="Hamster_3" logic="P3"/>
+        <player x="850" y="300" r="30" name="Hamster_4" logic="P4"/>
     </players>
+    <reserve>
+        <player x="725" y="250" r="30" name="Hamster_2" logic="P2"/>
+    </reserve>
 </config>

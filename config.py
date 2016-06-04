@@ -50,3 +50,4 @@ final_score_pos = (int(croot.find('final_score').get('x')), int(croot.find('fina
 
 time_tick = int(croot.find('time_tick').text)
 score_print_delay = int(croot.find('score_print_delay').text)
+vertical_shift = int(croot.find('name_vertical_shift').text)

@@ -1,24 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from game_objects import *
+import game_objects
 from board import Board
 from gate import Gate
 import copy
 import xml.etree.ElementTree as ET
-
+import random
+import config
 
 class Game:
-    _player_deviation = 30
-    _score = [0, 0]
-    _max_score = [3, 3]
-
-    _is_paused = False
-    _exceptional_type_problem_happened = [False, False]
-
-    _balls_init = []
-
-    _team_players1 = []
-    _team_players2 = []
 
     @classmethod
     def from_files(cls, conf_filename="./game_config.xml",
@@ -29,6 +19,10 @@ class Game:
             open(t2_conf_filename, 'r').read())
 
     def __init__(self, conf_str, team1_conf, team2_conf):
+        self._score = [0, 0]
+        self._is_paused = False
+        self._exceptional_type_problem_happened = [False, False]
+
         self._croot = ET.fromstring(conf_str)
         self._t1_croot = ET.fromstring(team1_conf)
         self._t2_croot = ET.fromstring(team2_conf)
@@ -36,24 +30,32 @@ class Game:
         self._board = Board.fromNode(self._croot.find('board'))
         self._gate = Gate.fromNode(self._croot.find('gate'))
 
+
+        self._max_score = [int(self._croot.find('max_score').get('left')),
+                             int(self._croot.find('max_score').get('right'))]
+
         self._balls_init = []
+        self._team_players1 = []
+        self._team_players2 = []
+
 
         for ball in self._croot.findall('./balls/ball'):
-            bi = "self._balls_init.append(Ball([" + \
+            bi = "self._balls_init.append(game_objects.Ball([" + \
                   ball.get('x') + "," + \
                   ball.get('y') + "]," + \
-                  ball.get('r') + " , ball_skin))"
+                  ball.get('r') + " , game_objects.ball_skin))"
             exec (bi)
 
         self._player_deviation = int(self._croot.find('player_deviation').text)
 
+
         t1_filename = self._t1_croot.find('file_name').text
         exec ("import " + t1_filename)
         for pl in self._t1_croot.findall('./players/player'):
-            comm = "self._team_players1.append(Player([" + \
+            comm = "self._team_players1.append(game_objects.Player([" + \
                    pl.get('x') + "," + \
                    pl.get('y') + "]," + \
-                   pl.get('r') + " , first_team_skin, " + \
+                   pl.get('r') + " , game_objects.first_team_skin, " + \
                    t1_filename + "." + pl.get('logic') + "() , '" + \
                    pl.get('name') + \
                    "'))"
@@ -62,10 +64,10 @@ class Game:
         t2_filename = self._t2_croot.find('file_name').text
         exec ("import " + t2_filename)
         for pl in self._t2_croot.findall('./players/player'):
-            comm = "self._team_players2.append(Player([" + \
+            comm = "self._team_players2.append(game_objects.Player([" + \
                    pl.get('x') + "," + \
                    pl.get('y') + "]," + \
-                   pl.get('r') + " , second_team_skin, " + \
+                   pl.get('r') + " , game_objects.second_team_skin, " + \
                    t2_filename + "." + pl.get('logic') + "() , '" + \
                    pl.get('name') + \
                    "'))"
@@ -173,7 +175,7 @@ class Game:
         return copy.copy(self._score)
 
     def get_score_string(self):
-        return score_pattern.format(self._score[0], self._score[1])
+        return config.score_pattern.format(self._score[0], self._score[1])
 
     def is_paused(self):
         return True if self._is_paused else False
@@ -192,8 +194,8 @@ class Game:
             i.centerx += random.randint(-self._player_deviation, self._player_deviation)
             i.centery += random.randint(-self._player_deviation, self._player_deviation)
         for i in self.t2:
-            i.centerx += random.randint(-30, 30)
-            i.centery += random.randint(-30, 30)
+            i.centerx += random.randint(-self._player_deviation, self._player_deviation)
+            i.centery += random.randint(-self._player_deviation, self._player_deviation)
 
     def is_technical_issue(self):
         if self._exceptional_type_problem_happened[0] or self._exceptional_type_problem_happened[1]:
