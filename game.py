@@ -91,7 +91,10 @@ class Game:
 
         self._on_board_playres(self.t1)
         self._on_board_playres(self.t2)
-        self._on_board_objects()
+
+        # don't reverse ball, if there was a goal
+        if not self._is_paused:
+            self._on_board_objects()
 
         self._move()
 
