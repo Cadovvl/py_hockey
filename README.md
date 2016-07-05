@@ -1,6 +1,6 @@
 # py_hockey
 Python pynguin hockey(studying tasks)
-Game is crossplatform, but command below are for linux. 
+Game is crossplatform, but commands below are for linux. 
 Todo: add windows manual
 
 ## Dependencies
